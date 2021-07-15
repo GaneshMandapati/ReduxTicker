@@ -9,8 +9,7 @@ const initialState = {
   connected: false
 }
 
-const tickerRecuder = (state = initialState, action) => {
-  console.log(action.payload, "hi");
+const tickerRecuder = (state = initialState, action = {}) => {
   switch (action.type) {
     case 'UPDATE_TICKER':
       return {
@@ -21,8 +20,12 @@ const tickerRecuder = (state = initialState, action) => {
         change: action.payload[4],
         change_percent: action.payload[5] * 100,
         bid: action.payload[6],
-        fetched: true,
-        connected: true
+        fetched: true
+      }
+    case 'CONNECT':
+      return {
+        ...state,
+        connected: action.connected
       }
     default:
       return state;

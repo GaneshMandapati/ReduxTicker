@@ -4,7 +4,8 @@ import Loading from './Loading';
 import NumericLabel from 'react-pretty-numbers';
 import classnames from "classnames";
 import "../App.css";
-import { open, close } from "../redux/actions/actions";
+import { open, close, updateTicker } from "../redux/actions/actions";
+
 
 function ticker({ data }) {
   return (
@@ -12,14 +13,16 @@ function ticker({ data }) {
       <div className="Ticker d-flex justify-content-between align-items-center bg-dark text-light">
         <div className="Ticker-left d-flex justify-content-center align-items-center">
           <div>
+            <button className="btn btn-primary" onClick={close}>Close</button>
+            <button className="btn btn-success" onClick={open}>open</button>
+          </div>
+          <div>
             <img
               src="https://www.bitfinex.com/assets/BTC-alt-1ca8728fcf2bc179dfe11f9a0126bc303bee888bff8132c5ff96a4873cf9f0fb.svg"
               width="40"
               height="40"
               alt="BTC"
             />
-            <button onClick={close}>Close</button>
-            <button onClick={open}>open</button>
           </div>
           <div>
             <h5 className="mb-0">BTC / USD</h5>
